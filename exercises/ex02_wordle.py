@@ -25,9 +25,9 @@ def emojified(guess: str, secret: str) -> str:
     while i < len(guess):
         if guess[i] == secret[i]:
             result = result + GREEN_BOX
-        if contains_char(secret, guess[i]):
+        elif contains_char(secret, guess[i]):
             result = result + YELLOW_BOX
-        if contains_char(secret, guess[i]):
+        elif contains_char(secret, guess[i]):
             result = result + WHITE_BOX
         i = i + 1
     return result
