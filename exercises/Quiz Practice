@@ -1,0 +1,13 @@
+def fizzbuzz(n: int) -> str:
+    if n % 5 == 0 and n % 3 == 0:
+        return "fizzbuzz"
+    if n % 5 == 0 and n % 3 != 0:
+        return "buzz"
+    if n % 5 != 0 and n % 3 == 0:
+        return "fizz"
+    else:
+        return str(n)
+
+
+age: int = 4
+age = age + 1
