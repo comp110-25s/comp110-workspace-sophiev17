@@ -15,7 +15,7 @@ def contains_char(searched_string: str, check_letter: str) -> bool:
 
 
 def emojified(guess: str, secret: str) -> str:
-    """Calling contains_char function to produce emojis that give the colored wordle hints"""
+    """Calling contains_char function to produce emojis give the colored wordle hints"""
     assert len(guess) == len(secret), "Guess must be same length as secret"
     WHITE_BOX: str = "\U00002B1C"
     GREEN_BOX: str = "\U0001F7E9"
@@ -25,9 +25,9 @@ def emojified(guess: str, secret: str) -> str:
     while i < len(guess):
         if guess[i] == secret[i]:
             result = result + GREEN_BOX
-        elif contains_char(secret, guess[i]) == True:
+        if contains_char(secret, guess[i]):
             result = result + YELLOW_BOX
-        elif contains_char(secret, guess[i]) == False:
+        if contains_char(secret, guess[i]):
             result = result + WHITE_BOX
         i = i + 1
     return result
