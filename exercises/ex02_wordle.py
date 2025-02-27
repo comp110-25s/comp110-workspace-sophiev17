@@ -11,6 +11,7 @@ def contains_char(searched_string: str, check_letter: str) -> bool:
         if searched_string[i] == check_letter:
             return True
         i = i + 1
+        """each letter in the given word will be checked for the specific letter only while the index is less than the searched string"""
     return False
 
 
@@ -21,16 +22,21 @@ def emojified(guess: str, secret: str) -> str:
     GREEN_BOX: str = "\U0001F7E9"
     YELLOW_BOX: str = "\U0001F7E8"
     i: int = 0
-    result: str = ""
+    emoji_result: str = ""
     while i < len(guess):
+        """the while loop will continue for each letter in the guess until the index equals the length."""
         if guess[i] == secret[i]:
-            result = result + GREEN_BOX
+            emoji_result = emoji_result + GREEN_BOX
+            """if the indexed letter in the guess is the same as the indexed letter in the secret word, then a green box will be added to the string in that spot"""
         elif contains_char(secret, guess[i]):
-            result = result + YELLOW_BOX
-        elif contains_char(secret, guess[i]):
-            result = result + WHITE_BOX
+            emoji_result = emoji_result + YELLOW_BOX
+            """if there isn't already a green box assigned, the indexed letter in the guess matches any of the letters in the secret, then a yellow box will be added to the string in that spot"""
+        else:
+            emoji_result = emoji_result + WHITE_BOX
+            """if there isn't already a green or yellow box added to the string for the indexed letter in the guess, then a white box will be added to the string"""
         i = i + 1
-    return result
+        """the loop isn't infinite since the index value increases each time the loop is accessed"""
+    return emoji_result
 
 
 def input_guess(expected_length: int) -> str:
@@ -53,7 +59,9 @@ def main(secret: str) -> None:
             print(f"You won in {turn}/6 turns!")
             return
         turn = turn + 1
+        """the while loop checks the length of the guess compared to the secret using the input_guess and if it's the same length, it'll run the emojified function which checks each letter and gives a resulting emoji as long as it has been six turns or less"""
     print("X/6 - Sorry, try again tomorrow!")
+    """this only prints if all 6 turns have been used and they never guessed the secret word"""
 
 
 if __name__ == "__main__":
