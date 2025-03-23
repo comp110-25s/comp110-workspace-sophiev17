@@ -13,20 +13,18 @@ def invert(switch: dict[str, str]) -> dict[str, str]:
     for key in switch:
         all_keys.append(key)
 
-    """While the index is less than the number of keys in the original dictionary, the key and value switch"""
     while idx < len(all_keys):
-        """The key at that particular index from the listt of keys becomes the new value of the key variable as the loop progresses"""
+        """Key at that index becomes new value"""
         key = all_keys[idx]
-        """This pulls the corresponding value for the original key and value pair in the original dictionary"""
+        """Pulls corresponding value for og key and value pair in og dictionary"""
         value = switch[key]
         """This loop only continues if there isn't already """
         if value in inverted_dict:
             raise KeyError(
-                f"Duplicate found of '{value}'. Retry using dictionary with all uniques values"
+                f"Duplicate found of '{value}'. Retry using all uniques values"
             )
-        """This makes a new dictionary where the keys and values from the original dictionary switch and adds to the dictionary with each iteration of the while loop"""
+        """New dictionary, keys and values switch and adds to dict with each loop"""
         inverted_dict[value] = key
-        """This increases the index so an infinite loop isn't created"""
         idx += 1
 
     return inverted_dict
@@ -54,13 +52,27 @@ def favorite_color(namescolors: dict[str, str]) -> str:
     """Names in the namescolors dictionary will be added to a list called all_colors"""
     for key in namescolors:
         all_colors.append(namescolors[key])
+    count(all_colors)
     color_count = count(all_colors)
 
     while idx < len(all_colors):
         color = all_colors[idx]
-        count = color_count[color]
-        if count > max_count:
+        ongoing_count = color_count[color]
+        if ongoing_count > max_count:
             max_color = color
-            max_count = count
+            max_count = ongoing_count
         idx += 1
     return max_color
+
+
+def bin_len(bins: list[str]) -> dict[int, set[str]]:
+    bin_dict: dict[int, set[str]] = {}
+
+    for string in bins:
+        length = len(string)
+
+        if length in bin_dict:
+            bin_dict[length].add(string)
+        else:
+            bin_dict[length] = {string}
+    return bin_dict
