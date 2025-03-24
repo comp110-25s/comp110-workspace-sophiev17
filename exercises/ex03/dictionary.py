@@ -33,6 +33,7 @@ def invert(switch: dict[str, str]) -> dict[str, str]:
 def count(list: list[str]) -> dict[str, int]:
     new_dict: dict[str, int] = {}
     idx: int = 0
+    """Associates items with the number of times they occurred in the string"""
     while idx < len(list):
         item = list[idx]
         if item in new_dict:
@@ -54,10 +55,11 @@ def favorite_color(namescolors: dict[str, str]) -> str:
         all_colors.append(namescolors[key])
     count(all_colors)
     color_count = count(all_colors)
-
+    """Loops through each color"""
     while idx < len(all_colors):
         color = all_colors[idx]
         ongoing_count = color_count[color]
+        """If this color's count is higher than the current max then update"""
         if ongoing_count > max_count:
             max_color = color
             max_count = ongoing_count
