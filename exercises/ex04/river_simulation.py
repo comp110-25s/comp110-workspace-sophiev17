@@ -1,3 +1,5 @@
+"""This file runs the river simulation from the fish, bear and river classes"""
+
 __author__ = "730579326"
 
 from exercises.EX04.river import River
