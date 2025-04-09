@@ -1,3 +1,5 @@
+__author__ = "730579326"
+
 from exercises.ex04.river import River
 
 my_river: River = River(num_fish=10, num_bears=2)
