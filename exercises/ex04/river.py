@@ -9,6 +9,8 @@ from exercises.EX04.bear import Bear
 
 
 class River:
+    """We have a river!"""
+
     day: int
 
     def __init__(self, num_fish: int, num_bears: int):
